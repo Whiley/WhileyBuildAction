@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ${INPUT_WORKDIR}
+cd ${GITHUB_WORKSPACE}
 find
 echo "${WHILEYHOME}"
 echo "Building Project ..."
