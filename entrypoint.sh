@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Enter working directory
 cd ${GITHUB_WORKSPACE}
+# Print debug info
 echo "${WHILEYHOME}"
-/bin/sh ${WHILEYHOME}/bin/wy --verbose build
+# Run Whiley build
+${WHILEYHOME}/bin/wy --verbose build
+
