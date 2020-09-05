@@ -1,4 +1,7 @@
 #!/bin/sh
 
 cd ${INPUT_WORKDIR}
-pwd
+find
+echo "${WHILEYHOME}"
+echo "Building Project ..."
+/bin/sh ${WHILEYHOME}/bin/wy build
