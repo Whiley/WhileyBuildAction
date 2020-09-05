@@ -1,0 +1,5 @@
+name: 'Whiley Build Action'
+description: 'Build a Whiley Project'
+runs:
+  using: 'docker'
+  image: 'DockerFile'
