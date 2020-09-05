@@ -16,5 +16,7 @@ RUN tar xvzf /home/whiley/wdk-v0.5.0.tgz -C /home/whiley
 ENV WHILEYHOME "/home/whiley/wdk-v0.5.0/"
 # Configure path
 ENV PATH "$PATH:/home/whiley/wdk-v0.5.0/bin"
+# Copy over the entrypoint
+COPY entrypoint.sh /entrypoint.sh
 # Set the default command
-CMD ["entrypoint.sh"]
+CMD ["/entrypoint.sh"]
