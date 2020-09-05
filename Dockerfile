@@ -9,13 +9,13 @@ RUN apk update && apk add --no-cache apache-ant
 # Construct working directory for Whiley Distribution
 RUN mkdir /home/whiley
 # Download Whiley Development Kit
-RUN wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-v0.5.0.tgz
+RUN wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-v0.5.1.tgz
 # Unpack Whiley Development Kit
-RUN tar xvzf /home/whiley/wdk-v0.5.0.tgz -C /home/whiley
+RUN tar xvzf /home/whiley/wdk-v0.5.1.tgz -C /home/whiley
 # Configure WHILEYHOME
-ENV WHILEYHOME "/home/whiley/wdk-v0.5.0/"
+ENV WHILEYHOME "/home/whiley/wdk-v0.5.1"
 # Configure path
-ENV PATH "$PATH:/home/whiley/wdk-v0.5.0/bin"
+ENV PATH "$PATH:/home/whiley/wdk-v0.5.1/bin"
 # Copy over the entrypoint
 COPY entrypoint.sh /entrypoint.sh
 # Set the default command
