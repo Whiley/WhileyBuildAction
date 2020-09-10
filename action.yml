@@ -1,5 +1,14 @@
 name: 'Whiley Build Action'
 description: 'Build a Whiley Project'
+inputs:
+  version:
+    description: 'WhileyDevelopmentKit version to use'
+    required: false
+    default: 'latest'
+  checking:
+    description: 'Flag to enable Whiley QuickCheck'
+    required: false
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
