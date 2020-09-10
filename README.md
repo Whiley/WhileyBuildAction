@@ -1,6 +1,6 @@
 # WhileyBuildAction
 
-A Github action for building Whiley project repositories.  You can example repositories using the action [here](https://github.com/Whiley/STD.wy/) and [here](https://github.com/DavePearce/Conway.wy).
+A Github action for building Whiley project repositories.  You can find example repositories using the action [here](https://github.com/Whiley/STD.wy/) and [here](https://github.com/DavePearce/Conway.wy).
 
 ## Example
 
