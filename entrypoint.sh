@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Construct working directory for Whiley Distribution
 mkdir /home/whiley
@@ -19,11 +19,17 @@ export PATH="$PATH:$WHILEYHOME/bin"
 # Enter working directory
 cd ${GITHUB_WORKSPACE}
 # Print debug info
-echo "${WHILEYHOME}"
+echo "WHILEYHOME=${WHILEYHOME}"
+echo "================================================================================"
+echo "Running wy build ..."
+echo "================================================================================"
 # Run Whiley build
-/bin/sh ${WHILEYHOME}/bin/wy --verbose build
+/bin/bash ${WHILEYHOME}/bin/wy --verbose build
 # Run Whiley QuickCheck (if requested)
 if [ "$INPUT_CHECKING" = true ] ;
 then
-    /bin/sh ${WHILEYHOME}/bin/wy --verbose check
+    echo "================================================================================"
+    echo "Running wy check ..."
+    echo "================================================================================"    
+    /bin/bash ${WHILEYHOME}/bin/wy --verbose check
 fi
