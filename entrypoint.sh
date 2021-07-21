@@ -1,5 +1,6 @@
 #!/bin/bash
 USER=whiley
+WDK_VERSION=v0.5.3
 # =================================================================================
 # Install Z3
 # =================================================================================
@@ -19,6 +20,8 @@ z3 --version
 # Make dotnet package repository available
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 dpkg -i packages-microsoft-prod.deb
+# Update all install packages
+apt-get -y update
 # Install dotnet 5.0
 apt-get install dotnet-sdk-5.0
 # Configure DOTNET Home
@@ -34,18 +37,12 @@ export PATH="$PATH:/home/$USER/.dotnet/tools"
 # =================================================================================
 # Construct working directory for Whiley Distribution
 mkdir /home/whiley
-# Determine latest version (if necessary)
-if [ "$INPUT_VERSION" == "latest" ] ;
-then
-    # Download LATEST indicator
-    INPUT_VERSION=`wget -O - https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/LATEST`
-fi
 # Download Whiley Development Kit
-wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${INPUT_VERSION}.tgz
+wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${WDK_VERSION}.tgz
 # Unpack Whiley Development Kit
-tar xvzf /home/whiley/wdk-${INPUT_VERSION}.tgz -C /home/whiley
+tar xvzf /home/whiley/wdk-${WDK_VERSION}.tgz -C /home/whiley
 # Configure WHILEYHOME
-export WHILEYHOME="/home/whiley/wdk-${INPUT_VERSION}"
+export WHILEYHOME="/home/whiley/wdk-${WDK_VERSION}"
 # Configure path
 export PATH="$PATH:$WHILEYHOME/bin"
 # Enter working directory
