@@ -1,5 +1,27 @@
 #!/bin/bash
 
+# =================================================================================
+# Configure Z3 / Boogie
+# =================================================================================
+Z3_BASE="z3-4.8.10"
+Z3_PKG="$Z3_BASE-x64-ubuntu-18.04"
+Z3_URL="https://github.com/Z3Prover/z3/releases/download/$Z3_BASE/$Z3_PKG.zip"
+# Download and install Z3
+wget $Z3_URL
+unzip $Z3_PKG.zip
+mv $Z3_PKG z3
+export PATH="$PATH:/home/$USER/z3/bin"
+# Test Z3
+z3 --version
+# Configure DOTNET Home
+export DOTNET_CLI_HOME=/home/$USER
+# Install Boogie
+dotnet tool install --global boogie
+#
+export PATH="$PATH:/home/$USER/.dotnet/tools"
+# =================================================================================
+# Configure Whiley
+# =================================================================================
 # Construct working directory for Whiley Distribution
 mkdir /home/whiley
 # Determine latest version (if necessary)
