@@ -34,7 +34,7 @@ dpkg -i packages-microsoft-prod.deb
 # Update all install packages
 apt-get -y update
 # Install dotnet 5.0
-apt-get install dotnet-sdk-5.0
+apt-get -y install dotnet-sdk-5.0
 # Configure DOTNET Home
 export DOTNET_CLI_HOME=/home/$USER
 # =================================================================================
@@ -46,14 +46,12 @@ export PATH="$PATH:/home/$USER/.dotnet/tools"
 # =================================================================================
 # Install Whiley
 # =================================================================================
-# Construct working directory for Whiley Distribution
-mkdir /home/whiley
 # Download Whiley Development Kit
-wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${INPUT_VERSION}.tgz
+wget -P /home/$USER https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${INPUT_VERSION}.tgz
 # Unpack Whiley Development Kit
-tar xvzf /home/whiley/wdk-${INPUT_VERSION}.tgz -C /home/whiley
+tar xvzf /home/$USER/wdk-${INPUT_VERSION}.tgz -C /home/$USER
 # Configure WHILEYHOME
-export WHILEYHOME="/home/whiley/wdk-${INPUT_VERSION}"
+export WHILEYHOME="/home/$USER/wdk-${INPUT_VERSION}"
 # Configure path
 export PATH="$PATH:$WHILEYHOME/bin"
 # Enter working directory
