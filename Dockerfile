@@ -8,7 +8,7 @@ FROM ubuntu:focal
 ENV DEBIAN_FRONTEND noninteractive
 # Update image and install git
 RUN apt-get update && apt-get install -y \
-   openjdk-8-jdk \
+   openjdk-11-jdk \
    ant \
    wget \
    boogie
