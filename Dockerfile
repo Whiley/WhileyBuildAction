@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
    openjdk-11-jdk \
    ant \
    wget \
-   zip \
-   dotnet-sdk-5.0
+   apt-transport-https \
+   zip
 # Copy over the entrypoint
 COPY entrypoint.sh /entrypoint.sh
 # Set the default command

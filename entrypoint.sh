@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =================================================================================
-# Configure Z3 / Boogie
+# Install Z3
 # =================================================================================
 Z3_BASE="z3-4.8.10"
 Z3_PKG="$Z3_BASE-x64-ubuntu-18.04"
@@ -13,14 +13,24 @@ mv $Z3_PKG z3
 export PATH="$PATH:/home/$USER/z3/bin"
 # Test Z3
 z3 --version
+# =================================================================================
+# Install Dotnet 5.0
+# =================================================================================
+# Make dotnet package repository available
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+# Install dotnet 5.0
+sudo apt-get install dotnet-sdk-5.0
 # Configure DOTNET Home
 export DOTNET_CLI_HOME=/home/$USER
+# =================================================================================
 # Install Boogie
+# =================================================================================
 dotnet tool install --global boogie
 #
 export PATH="$PATH:/home/$USER/.dotnet/tools"
 # =================================================================================
-# Configure Whiley
+# Install Whiley
 # =================================================================================
 # Construct working directory for Whiley Distribution
 mkdir /home/whiley
@@ -42,6 +52,9 @@ export PATH="$PATH:$WHILEYHOME/bin"
 cd ${GITHUB_WORKSPACE}
 # Print debug info
 echo "WHILEYHOME=${WHILEYHOME}"
+# =================================================================================
+# Run Whiley
+# =================================================================================
 echo "================================================================================"
 echo "Running wy build ..."
 echo "================================================================================"
