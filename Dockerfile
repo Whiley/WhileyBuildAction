@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
    apt-transport-https \
    zip
 #   
-WORKDIR=/home/whiley
+WORKDIR /home/whiley
 # Copy over the entrypoint
 COPY entrypoint.sh /entrypoint.sh
 # Set the default command
