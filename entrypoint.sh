@@ -1,6 +1,17 @@
 #!/bin/bash
-USER=whiley
-WDK_VERSION=v0.5.3
+
+# Configure USER.  On Docker this is unset, but on the GitHub action
+# it is set.
+if [ -z $USER ]
+then
+    USER=whiley
+fi
+# Configure version of WDK to use.
+if [ -z $INPUT_VERSION ] || [ "$INPUT_VERSION" == "latest" ] ;
+then
+    # Download LATEST indicator
+    INPUT_VERSION=`wget -O - https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/LATEST`
+fi
 # =================================================================================
 # Install Z3
 # =================================================================================
@@ -38,11 +49,11 @@ export PATH="$PATH:/home/$USER/.dotnet/tools"
 # Construct working directory for Whiley Distribution
 mkdir /home/whiley
 # Download Whiley Development Kit
-wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${WDK_VERSION}.tgz
+wget -P /home/whiley https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${INPUT_VERSION}.tgz
 # Unpack Whiley Development Kit
-tar xvzf /home/whiley/wdk-${WDK_VERSION}.tgz -C /home/whiley
+tar xvzf /home/whiley/wdk-${INPUT_VERSION}.tgz -C /home/whiley
 # Configure WHILEYHOME
-export WHILEYHOME="/home/whiley/wdk-${WDK_VERSION}"
+export WHILEYHOME="/home/whiley/wdk-${INPUT_VERSION}"
 # Configure path
 export PATH="$PATH:$WHILEYHOME/bin"
 # Enter working directory
