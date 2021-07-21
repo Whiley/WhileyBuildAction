@@ -1,5 +1,5 @@
 #!/bin/bash
-
+USER=whiley
 # =================================================================================
 # Install Z3
 # =================================================================================
@@ -18,9 +18,9 @@ z3 --version
 # =================================================================================
 # Make dotnet package repository available
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
+dpkg -i packages-microsoft-prod.deb
 # Install dotnet 5.0
-sudo apt-get install dotnet-sdk-5.0
+apt-get install dotnet-sdk-5.0
 # Configure DOTNET Home
 export DOTNET_CLI_HOME=/home/$USER
 # =================================================================================
