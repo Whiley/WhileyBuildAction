@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y \
    zip
 #   
 WORKDIR /home/whiley
+# Get Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+# Configure cargo
+RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
 # Copy over the entrypoint
 COPY entrypoint.sh /entrypoint.sh
 # Set the default command
