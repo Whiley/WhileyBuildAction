@@ -46,18 +46,7 @@ export PATH="$PATH:/home/$USER/.dotnet/tools"
 # =================================================================================
 # Install Whiley
 # =================================================================================
-# Download Whiley Development Kit
-wget -P /home/$USER https://github.com/Whiley/WhileyDevelopmentKit/raw/master/dist/wdk-${INPUT_VERSION}.tgz
-# Unpack Whiley Development Kit
-tar xvzf /home/$USER/wdk-${INPUT_VERSION}.tgz -C /home/$USER
-# Configure WHILEYHOME
-export WHILEYHOME="/home/$USER/wdk-${INPUT_VERSION}"
-# Configure path
-export PATH="$PATH:$WHILEYHOME/bin"
-# Enter working directory
-cd ${GITHUB_WORKSPACE}
-# Print debug info
-echo "WHILEYHOME=${WHILEYHOME}"
+cargo install whiley
 # =================================================================================
 # Run Whiley
 # =================================================================================
@@ -65,12 +54,12 @@ echo "==========================================================================
 echo "Running wy build ..."
 echo "================================================================================"
 # Run Whiley build
-/bin/bash ${WHILEYHOME}/bin/wy --verbose build
+wy --verbose build
 # Run Whiley QuickCheck (if requested)
 if [ "$INPUT_CHECKING" = true ] ;
 then
     echo "================================================================================"
     echo "Running wy check ..."
     echo "================================================================================"    
-    /bin/bash ${WHILEYHOME}/bin/wy --verbose check
+    wy --verbose check
 fi
