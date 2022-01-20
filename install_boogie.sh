@@ -1,11 +1,4 @@
 #!/bin/bash
-
-# Configure USER.  On Docker this is unset, but on the GitHub action
-# it is set.
-if [ -z $USER ]
-then
-    USER=root
-fi
 # =================================================================================
 # Install Dotnet 6.0
 # =================================================================================
@@ -17,10 +10,8 @@ apt-get -y update
 # Install dotnet 5.0
 apt-get -y install dotnet-sdk-6.0
 # Configure DOTNET Home
-export DOTNET_CLI_HOME=/home/$USER
+export DOTNET_CLI_HOME=/root
 # =================================================================================
 # Install Boogie
 # =================================================================================
 dotnet tool install --global boogie
-#
-export PATH="$PATH:/home/$USER/.dotnet/tools"
